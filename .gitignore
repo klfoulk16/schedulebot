@@ -57,3 +57,7 @@ botserverrc
 # Pycharm
 \.DS_Store
 \.idea/
+
+events_response.json
+playing.py
+.env
