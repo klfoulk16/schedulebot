@@ -6,6 +6,7 @@ import requests
 import dotenv
 import os
 from requests.auth import HTTPBasicAuth
+import pprint
 
 dotenv.load_dotenv()
 
@@ -56,11 +57,13 @@ def parse_json(response, person_id):
     in the next 24 hours
     """
     their_events = []
-
     for event in response:
-        for participant in event['participants']:
-            if participant['person']['zulip_id'] == person_id:
-                their_events.append(format_event(event))
+        if "participants" not in event:
+            continue
+        else:
+            for participant in event['participants']:
+                if participant['person']['zulip_id'] == person_id:
+                    their_events.append(format_event(event))
     return their_events
 
 

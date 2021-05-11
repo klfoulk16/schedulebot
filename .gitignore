@@ -61,3 +61,4 @@ botserverrc
 events_response.json
 playing.py
 .env
+zuliprc-12345
