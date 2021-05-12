@@ -35,12 +35,16 @@ class ScheduleBotHandler:
 
         if req == ['my-events']:
             response = helpers.get_my_events(message['sender_id'])
+            if response:
+                bot_handler.send_reply(message, response)
 
-        if req == ['all-events']:
+        elif req == ['all-events']:
             response = helpers.get_all_events()
+            if response:
+                bot_handler.send_reply(message, response)
 
-        if response:
-            bot_handler.send_reply(message, response)
+        else:
+            bot_handler.send_reply(message, "I don't understand what you're saying...try again :)")
 
         return
 
